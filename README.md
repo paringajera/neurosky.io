@@ -101,3 +101,18 @@ Grotesk RoundDots font. For production set `APP_URL=https://neurosky.io` (alread
 Links to third-party sites (press articles, partner sites, the article video CDN `static.ext.waabi.ai`, the
 safety self-assessment PDF, social profiles, the HubSpot contact form) were left unchanged so they keep working;
 replace them with NeuroSky's own accounts and assets before launch.
+
+## Deploying to Hostinger
+
+The repository is ready for Hostinger shared hosting: built assets (`public/build`) are committed,
+and the root `.htaccess` sends every request into `public/`.
+
+1. In hPanel open **Websites → neurosky.io → Advanced → Git** and add
+   `https://github.com/paringajera/neurosky.io.git`, branch `main`, install path empty
+   (so it deploys into `public_html`). Click **Deploy**.
+2. Open **Advanced → SSH Access**, connect, go to the site folder (`cd domains/neurosky.io/public_html`)
+   and run `bash deploy/hostinger.sh` once. It installs PHP packages, creates `.env` from
+   `deploy/env.production`, generates the app key, fixes folder permissions and caches config.
+3. After later pushes, deploy again in hPanel and re-run `bash deploy/hostinger.sh`.
+
+After changing CSS or JavaScript, run `npm run build` locally and commit `public/build` before pushing.
