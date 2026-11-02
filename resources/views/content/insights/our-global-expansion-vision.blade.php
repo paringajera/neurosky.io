@@ -1,0 +1,7 @@
+<div class="rich-text w-full"><p>At Neuro Sky Technology Private Limited, we don’t just build logistics software. We build scalable, intelligent ecosystems that can power global supply chains.</p></div>
+<div class="rich-text w-full"><p>As the world moves toward hyperconnected logistics and real-time automation, our vision is to establish NeuroSky as a key global force shaping the future of movement, warehousing, and distribution.</p></div>
+<div class="rich-text w-full"><h2>Beyond India</h2></div>
+<div class="rich-text w-full"><p>We envision transforming logistics not just in India, but across Asia, the Middle East, Africa, and beyond, using data, AI, and automation to build a truly connected global logistics network.</p></div>
+<div class="rich-text w-full"><h2>Our growth plan</h2></div>
+<div class="rich-text w-full"><ol><li><strong>Foundation:</strong> strengthen the platform architecture, onboard early adopters, and pilot smart hardware in fleets.</li><li><strong>Acceleration:</strong> launch smart warehouses, expand to tier-1 cities, and form strategic OEM partnerships.</li><li><strong>Diversification:</strong> enter international markets in Asia and MENA, offer white-label solutions, and expand drone capabilities.</li><li><strong>Domination:</strong> full AI autonomy, predictive logistics models, and a global presence.</li></ol></div>
+<div class="rich-text w-full"><p>Never stop logistics. Always move forward.</p></div>

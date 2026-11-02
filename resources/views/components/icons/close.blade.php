@@ -1,0 +1,1 @@
+<svg {{ $attributes }} width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.5 3.5L0.5 0.5M3.5 3.5L6.5 6.5M3.5 3.5L6.5 0.5M3.5 3.5L0.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>

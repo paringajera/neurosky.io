@@ -1,0 +1,7 @@
+<div class="rich-text w-full"><p>Around 25% of road accidents in India are linked to commercial vehicle driver fatigue. Long hours, tight schedules, and difficult roads put drivers and everyone around them at risk. We believe technology can catch the warning signs early.</p></div>
+<div class="rich-text w-full"><h2>How it works</h2></div>
+<div class="rich-text w-full"><p>Using onboard sensors and AI analytics, we are building a driver monitoring system that tracks fatigue, distraction, over-speeding, and harsh braking. When the system detects a risk, it raises a real-time alert so the driver can react immediately.</p></div>
+<div class="rich-text w-full"><p>The same data feeds periodic safety reports for fleet managers. Instead of learning about unsafe habits after an incident, teams can coach drivers proactively and track improvement over time.</p></div>
+<div class="rich-text w-full"><h2>From reactive to proactive safety</h2></div>
+<div class="rich-text w-full"><p>Our goal is a proactive system that reduces road accidents and enhances driver safety. AI that monitors fatigue, speeding, and distraction has the potential to reduce accident risk by up to 30%, while also increasing accountability across the fleet.</p></div>
+<div class="rich-text w-full"><p>Driver behavior monitoring is one part of a wider safety stack that includes rear LCD displays for truck communication and drone-assisted navigation.</p></div>

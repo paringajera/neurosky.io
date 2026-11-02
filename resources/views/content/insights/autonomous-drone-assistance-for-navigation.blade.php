@@ -1,0 +1,6 @@
+<div class="rich-text w-full"><p>Some of the most dangerous moments on the road come when a driver simply cannot see what is ahead: a blind curve in hilly terrain, a traffic jam that hides a stopped vehicle, or a construction zone with sudden lane changes.</p></div>
+<div class="rich-text w-full"><h2>A second pair of eyes in the sky</h2></div>
+<div class="rich-text w-full"><p>In these low-visibility conditions, our future trucks will deploy autonomous drones. The drone flies ahead of the truck, captures a clear live video feed of the road, and transmits it straight to the driver’s dashboard screen.</p></div>
+<div class="rich-text w-full"><p>With that view, drivers gain foresight. They can slow down earlier, choose a safer lane, or wait for a better moment, which helps prevent accidents in low-light or blocked terrain zones.</p></div>
+<div class="rich-text w-full"><h2>First-in-class</h2></div>
+<div class="rich-text w-full"><p>Drone integration is one of the things that sets NeuroSky apart. Among the logistics technology platforms we have compared ourselves with, none offers drone-assisted navigation. We see AI and drones working hand in hand to overcome the visibility and navigation challenges that trucks face every day.</p></div>

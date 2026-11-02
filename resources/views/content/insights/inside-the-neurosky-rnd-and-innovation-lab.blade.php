@@ -1,0 +1,6 @@
+<div class="rich-text w-full"><p>Innovation never stops. As we continue to shape the logistics landscape, we are actively investing in futuristic solutions that merge artificial intelligence, autonomous systems, and smart hardware integration.</p></div>
+<div class="rich-text w-full"><h2>What the lab is working on</h2></div>
+<div class="rich-text w-full"><ul><li><strong>AI-driven traffic prediction</strong> to anticipate congestion before trucks reach it.</li><li><strong>Blockchain for supply chain security</strong>, creating secure, tamper-proof logistics data trails.</li><li><strong>Predictive vehicle maintenance</strong> that uses sensor data to catch faults before they cause breakdowns.</li><li><strong>Digital twin models of warehouse operations</strong> to test layouts and workflows virtually.</li></ul></div>
+<div class="rich-text w-full"><h2>Our stack</h2></div>
+<div class="rich-text w-full"><p>For IoT and AI work, the lab builds on TensorFlow, OpenCV, ROS 2, and MQTT. The same lab drives our future projects: AI-powered load and route planning, driver behavior monitoring, rear LCD displays, drone-assisted navigation, and smart warehouse automation.</p></div>
+<div class="rich-text w-full"><p>Research and development is a core part of how we grow, and a quarter of our planned investment is dedicated to it.</p></div>

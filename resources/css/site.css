@@ -1,0 +1,515 @@
+/* ------------------------------------------------------------------
+   Component-level styles that depend on JS state (header, banner,
+   benefits module, careers stage…). Tokens live in app.css.
+   ------------------------------------------------------------------ */
+
+/* Announcement banner + header offset ----------------------------- */
+.announcement {
+    transform: translateY(-100%);
+    transition: transform 0.5s var(--ease-snappy);
+}
+html.banner-ready .announcement {
+    transform: none;
+}
+html.banner-dismissed .announcement {
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+.site-header {
+    transition: transform 0.5s var(--ease-snappy);
+}
+html.banner-ready:not(.banner-dismissed) .site-header {
+    transform: translateY(var(--banner-height, 42px));
+}
+
+/* Header pill + menu ---------------------------------------------- */
+.site-header__pill,
+.site-header__pill-inner,
+.site-header__row,
+.site-nav__frame,
+.site-nav__frame > div {
+    transition: border-radius 0.35s var(--ease-snappy), padding 0.35s var(--ease-snappy);
+}
+.site-nav {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.site-nav__frame {
+    height: 0;
+    overflow: clip;
+    transition: height 0.45s var(--ease-snappy), opacity 0.3s ease;
+}
+.site-nav__body {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(-8px);
+    transition: opacity 0.4s ease 0.05s, filter 0.4s ease 0.05s, transform 0.4s var(--ease-snappy) 0.05s;
+}
+.site-header[data-open] .site-nav {
+    opacity: 1;
+}
+.site-header[data-open] .site-nav__body {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+}
+@media (max-width: 39.999rem) {
+    .site-header[data-open] {
+        top: 0;
+        width: 100%;
+    }
+    .site-header[data-open] .site-header__pill {
+        height: auto;
+        border-radius: 0 !important;
+        background: transparent;
+        padding: 0;
+    }
+    .site-header[data-open] .site-header__pill-inner {
+        padding-top: calc(var(--spacing) * 24);
+        padding-bottom: calc(var(--spacing) * 24);
+        border-radius: 0 !important;
+    }
+    .site-header[data-open] .site-header__row {
+        padding-right: calc(var(--spacing) * 25);
+        padding-left: calc(var(--spacing) * 40);
+    }
+    .site-header[data-open] .site-nav__frame,
+    .site-header[data-open] .site-nav__frame > div {
+        border-radius: 0 !important;
+    }
+}
+.menu-bar {
+    transition: transform 0.35s var(--ease-snappy);
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+}
+.site-header[data-open] .menu-bar--top {
+    transform: translateY(3px);
+}
+.site-header[data-open] .menu-bar--bottom {
+    transform: translateY(-3px);
+}
+
+/* Word reveal ------------------------------------------------------ */
+[data-reveal-words] [data-word] {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1), transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 85ms);
+}
+[data-reveal-words][data-reveal-slide] [data-word] {
+    transform: translateX(20px);
+}
+[data-reveal-words][data-reveal-fade] [data-word] {
+    transition-delay: calc(var(--i, 0) * 28ms);
+}
+[data-reveal-words].is-revealed [data-word] {
+    opacity: 1;
+    transform: none;
+}
+/* Collage paragraph: words sit at 10% and light up progressively */
+[data-collage-words] [data-word] {
+    opacity: 0.1;
+    transition: opacity 0.35s ease;
+    transition-delay: 0s;
+}
+[data-collage-words] [data-word].is-lit {
+    opacity: 1;
+}
+@media (scripting: none), (prefers-reduced-motion: reduce) {
+    [data-reveal-words] [data-word],
+    [data-collage-words] [data-word] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    [data-reveal-up],
+    [data-reveal-clip],
+    [data-collage-column],
+    [data-collage-text],
+    [data-hero-tagline],
+    [data-hero-cue-inner],
+    [data-footer-panel],
+    [data-footer-content] {
+        transform: none !important;
+        opacity: 1 !important;
+        clip-path: none !important;
+    }
+}
+
+/* Clip reveal (technology cards) ---------------------------------- */
+[data-reveal-clip] {
+    transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 150ms);
+}
+[data-reveal-clip].is-revealed {
+    clip-path: inset(0% 0% 0% 0% round 12px) !important;
+}
+
+/* Benefits ---------------------------------------------------------- */
+.benefit-item {
+    transition: opacity 0.4s ease;
+}
+.benefit-item:focus-visible {
+    outline-offset: 6px;
+}
+[data-benefit-desc] {
+    transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease 0.15s;
+}
+[data-benefits-image-wrap] {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+[data-benefits-image-wrap].is-hidden {
+    transform: scale(0.6);
+    opacity: 0;
+}
+[data-partner-image],
+[data-benefits-video-dim] {
+    will-change: opacity;
+}
+
+/* Careers stage ----------------------------------------------------- */
+.careers-slot {
+    transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1), width 0.6s cubic-bezier(0.22, 1, 0.36, 1), height 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+}
+.careers-slot.is-entering {
+    transform: translateX(100%);
+}
+.careers-slot.is-leaving {
+    z-index: 0 !important;
+    transform: translateX(20px) scale(0.5);
+    opacity: 0;
+}
+
+/* Partner tabs -------------------------------------------------------- */
+.partner-tab {
+    cursor: pointer;
+}
+.partner-tab:hover {
+    color: currentColor;
+}
+
+/* Footer ---------------------------------------------------------------- */
+[data-footer-panel] {
+    will-change: transform;
+}
+
+/* Compositing -------------------------------------------------------------
+   Scroll-mapped layers get their own compositor layer. Without this, Chrome
+   repaints the full-viewport image/video under them on every scroll frame
+   (the GPU process saturated and scrolling stuttered around the technology
+   section). */
+[data-parallax],
+[data-collage-column],
+[data-benefits-video],
+[data-benefits-mobile-video],
+[data-hero-clip] {
+    will-change: transform;
+}
+[data-benefits-stage] {
+    will-change: transform, opacity;
+}
+[data-benefits-dim],
+[data-hero-overlay] {
+    will-change: opacity;
+}
+/* page-progress bar is rewritten every scroll frame; keep it off the header's paint */
+[data-scroll-progress] {
+    will-change: transform;
+}
+
+/* Article prose --------------------------------------------------------- */
+.rich-text {
+    font-family: var(--font-zagma);
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: -0.036rem;
+}
+@media (min-width: 48rem) {
+    .rich-text {
+        font-size: 2rem;
+        line-height: 150%;
+        letter-spacing: -0.04rem;
+    }
+}
+.rich-text > * + * {
+    margin-top: 2.4rem;
+}
+.rich-text h2,
+.rich-text h3 {
+    font-size: 2.8rem;
+    line-height: 110%;
+    letter-spacing: -0.084rem;
+    margin-top: 4.8rem;
+}
+@media (min-width: 48rem) {
+    .rich-text h2,
+    .rich-text h3 {
+        font-size: 4rem;
+        letter-spacing: -0.12rem;
+    }
+}
+.rich-text a {
+    color: var(--color-pink);
+    text-decoration: underline;
+    text-decoration-thickness: 0.2rem;
+    text-underline-offset: 0.2rem;
+}
+.rich-text ul,
+.rich-text ol {
+    padding-left: 2.4rem;
+}
+.rich-text ul {
+    list-style: disc;
+}
+.rich-text ol {
+    list-style: decimal;
+}
+.rich-text li + li {
+    margin-top: 0.8rem;
+}
+.rich-text blockquote {
+    padding-left: 2.4rem;
+    border-left: 2px solid var(--color-pink);
+    font-style: italic;
+}
+.rich-text img,
+.rich-text video,
+.rich-text iframe {
+    width: 100%;
+    height: auto;
+    border-radius: var(--rounded-unit);
+}
+.rich-text iframe {
+    aspect-ratio: 16 / 9;
+}
+.rich-text figcaption {
+    font-family: var(--font-neue);
+    font-size: 1.2rem;
+    letter-spacing: 0.024rem;
+    color: color-mix(in oklab, currentColor 50%, transparent);
+    margin-top: 1.2rem;
+}
+.rich-text strong {
+    font-weight: 400;
+    font-family: var(--font-neue);
+}
+
+/* Partner author entrance ------------------------------------------- */
+[data-partner-author] span {
+    display: block;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-partner-author].is-in span {
+    opacity: 1;
+    transform: none;
+}
+[data-partner-author].is-in span:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+/* Insights featured slider ---------------------------------------------- */
+.featured-slide__title,
+.featured-slide__date,
+.featured-slide__cta > span {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.featured-slide.is-active .featured-slide__title {
+    opacity: 1;
+    transform: none;
+}
+.featured-slide.is-active .featured-slide__date {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.1s;
+}
+.featured-slide.is-active .featured-slide__cta > span {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.2s;
+}
+
+/* Share menu ----------------------------------------------------------- */
+.share-menu {
+    clip-path: inset(0px calc(100% - 24px) calc(100% - 24px) 0px round 24px);
+    transform: translateY(-34px);
+    opacity: 0;
+    pointer-events: none;
+    transition: clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+[data-share][data-open] .share-menu {
+    clip-path: inset(0px 0px 0px 0px round 8px);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Inline video player ---------------------------------------------------- */
+[data-player] video {
+    cursor: pointer;
+}
+[data-player][data-playing] .player-play {
+    opacity: 0;
+    pointer-events: none;
+}
+.player-play {
+    transition: opacity 0.3s ease;
+}
+
+/* Secondary pages ------------------------------------------------------- */
+.scrolly-step {
+    transition: opacity 0.5s ease;
+}
+[data-scrolly-line] {
+    will-change: transform;
+}
+[data-scrolly-counter].is-flip,
+[data-voices-counter].is-flip {
+    animation: counter-flip 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes counter-flip {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* hover accordion */
+.accordion-card {
+    flex: 0 0 auto;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1), flex-basis 0.6s cubic-bezier(0.22, 1, 0.36, 1), height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.accordion-card__text {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.accordion-card.is-active .accordion-card__text {
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+.accordion-card.is-active .btn-arrow {
+    opacity: 0;
+}
+.accordion-card .btn-arrow {
+    transition: opacity 0.3s ease, background-color 0.5s var(--ease-snappy), border-color 0.5s var(--ease-snappy);
+}
+@media (min-width: 48rem) {
+    .accordion-card {
+        width: 15.7%;
+        flex: 0 1 auto;
+    }
+    .accordion-card.is-active {
+        width: 100%;
+    }
+}
+@media (max-width: 47.999rem) {
+    .accordion-card {
+        height: 11.2rem;
+    }
+    .accordion-card.is-active {
+        height: 60rem;
+    }
+}
+
+/* careers voices image pair */
+.voice-slot {
+    transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1), right 0.6s cubic-bezier(0.22, 1, 0.36, 1), width 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+}
+.voice-slot.is-entering {
+    transform: translateX(110%);
+}
+.voice-slot.is-leaving {
+    z-index: 0 !important;
+    transform: translateX(-20px) scale(0.6);
+    opacity: 0;
+}
+
+/* investors marquee */
+.marquee {
+    --marquee-duration: 40s;
+    --marquee-direction: -1;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+    animation: marquee var(--marquee-duration) linear infinite;
+}
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+        animation: none;
+    }
+}
+
+/* locations map pins */
+.map-pin {
+    cursor: default;
+}
+.map-pin::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--color-pink);
+    opacity: 0;
+    pointer-events: none;
+}
+[data-locations-map].is-live .map-pin::after {
+    animation: pin-pulse 2.1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.map-pin__label {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 1rem);
+    transform: translate(-50%, 4px);
+    white-space: nowrap;
+    background: #fff;
+    color: var(--color-dark);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.6rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.map-pin:hover .map-pin__label,
+.map-pin:focus-visible .map-pin__label {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+@keyframes pin-pulse {
+    /* 12px square ring grows to 30px (2.5x) with a crisp 1px border, holds, then fades */
+    0% {
+        inset: 0;
+        opacity: 0;
+    }
+    18% {
+        inset: -9px;
+        opacity: 1;
+    }
+    30% {
+        inset: -9px;
+        opacity: 1;
+    }
+    55% {
+        inset: -9px;
+        opacity: 0;
+    }
+    100% {
+        inset: -9px;
+        opacity: 0;
+    }
+}
+
+
+/* Hero still image: a slow drift keeps the opening frame alive where a film used to play. */
+.hero-drift img{animation:hero-drift 24s ease-in-out infinite alternate;transform-origin:60% 50%;will-change:transform}
+@keyframes hero-drift{from{transform:scale(1.02)}to{transform:scale(1.12) translate3d(-1.5%,0,0)}}
+@media (prefers-reduced-motion:reduce){.hero-drift img{animation:none}}

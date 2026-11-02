@@ -1,0 +1,1 @@
+<svg {{ $attributes }} xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><rect class="menu-bar menu-bar--top" width="12" height="2" rx="1" y="0" fill="currentColor"/><rect class="menu-bar menu-bar--bottom" width="12" height="2" rx="1" y="6" fill="currentColor"/></svg>
