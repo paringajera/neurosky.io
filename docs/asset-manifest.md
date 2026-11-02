@@ -127,3 +127,9 @@ Unsplash (Unsplash License: free for commercial use, no attribution required), r
 
 The replaced PDF images stay in `profile/` but are no longer referenced; `dashboard.jpg` is still
 shown inside the Next Fleet article as the real product screenshot.
+
+### Unused reference media removed (November 2026)
+
+The 132 original reference images and videos the site no longer used (about 173 MB) were deleted.
+Tables above that list those files describe the original build; the files remain recoverable from
+the first commit (`5f0f701`). Unused NeuroSky profile images in `profile/` were kept.
