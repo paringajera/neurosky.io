@@ -1,15 +1,12 @@
+# Hostinger (shared hosting) serves this folder as public_html. Send every request into
+# Laravel's public/ folder so project files such as .env, composer.json, vendor/ and
+# storage/ are never reachable from the web.
 <IfModule mod_rewrite.c>
 Options +FollowSymLinks
 RewriteEngine On
 
-RewriteCond %{REQUEST_URI} !^/public/ 
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-
-RewriteRule ^(.*)$ /public/$1 
-#RewriteRule ^ index.php [L]
-RewriteRule ^(/)?$ public/index.php [L] 
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 <Files .env>
     Order allow,deny
