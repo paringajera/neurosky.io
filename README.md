@@ -104,16 +104,13 @@ replace them with NeuroSky's own accounts and assets before launch.
 
 ## Deploying to Hostinger
 
-Hostinger runs the ready-to-run `production` branch. It already contains the installed PHP packages
-(`vendor/`) and the built assets, so Composer and npm are never needed on the server. It never
-contains `.env`, because that file holds the secret app key.
+Everything is on `main`. The built assets (`public/build`) are committed, so npm is never needed on
+the server, and the root `.htaccess` sends every request into `public/`.
 
-- **Publish changes:** commit on `main` (run `npm run build` first if CSS/JS changed), then run
-  `bash deploy/build-production.sh`. It rebuilds the `production` branch from `main` and pushes it.
-- **Update the server:** over SSH, `cd ~/domains/neurosky.io/public_html && git pull`.
-- **First-time setup on the server** (once):
-  `git fetch origin && git checkout -f -B production origin/production`, then
-  `cp deploy/env.production .env && php artisan key:generate --force`.
+- **Publish changes:** run `npm run build` if CSS/JS changed, commit on `main`, and push.
+- **First time on the server**, over SSH in `~/domains/neurosky.io/public_html`: `bash deploy/hostinger.sh`.
+  It installs PHP packages, creates `.env` from `deploy/env.production` with a new app key,
+  fixes permissions and caches config.
+- **Update the server:** `git pull && bash deploy/hostinger.sh`.
 
-The root `.htaccess` sends every request into `public/`. Set the site's PHP version to 8.3 or newer
-in hPanel (Advanced → PHP Configuration).
+Set the site's PHP version to 8.3 or newer in hPanel (Advanced → PHP Configuration).
