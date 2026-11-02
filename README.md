@@ -104,15 +104,16 @@ replace them with NeuroSky's own accounts and assets before launch.
 
 ## Deploying to Hostinger
 
-The repository is ready for Hostinger shared hosting: built assets (`public/build`) are committed,
-and the root `.htaccess` sends every request into `public/`.
+Hostinger runs the ready-to-run `production` branch. It already contains the installed PHP packages
+(`vendor/`) and the built assets, so Composer and npm are never needed on the server. It never
+contains `.env`, because that file holds the secret app key.
 
-1. In hPanel open **Websites → neurosky.io → Advanced → Git** and add
-   `https://github.com/paringajera/neurosky.io.git`, branch `main`, install path empty
-   (so it deploys into `public_html`). Click **Deploy**.
-2. Open **Advanced → SSH Access**, connect, go to the site folder (`cd domains/neurosky.io/public_html`)
-   and run `bash deploy/hostinger.sh` once. It installs PHP packages, creates `.env` from
-   `deploy/env.production`, generates the app key, fixes folder permissions and caches config.
-3. After later pushes, deploy again in hPanel and re-run `bash deploy/hostinger.sh`.
+- **Publish changes:** commit on `main` (run `npm run build` first if CSS/JS changed), then run
+  `bash deploy/build-production.sh`. It rebuilds the `production` branch from `main` and pushes it.
+- **Update the server:** over SSH, `cd ~/domains/neurosky.io/public_html && git pull`.
+- **First-time setup on the server** (once):
+  `git fetch origin && git checkout -f -B production origin/production`, then
+  `cp deploy/env.production .env && php artisan key:generate --force`.
 
-After changing CSS or JavaScript, run `npm run build` locally and commit `public/build` before pushing.
+The root `.htaccess` sends every request into `public/`. Set the site's PHP version to 8.3 or newer
+in hPanel (Advanced → PHP Configuration).
